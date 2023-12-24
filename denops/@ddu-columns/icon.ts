@@ -24,7 +24,7 @@ export class Column extends BaseColumn<Params> {
       // for ascii
       case "0":
         icon = "AA";
-        iconLength = await fn.strdisplaywidth(args.denops, icon);
+        iconLength = await fn.strlen(args.denops, icon);
         padding = "-".repeat(5 - iconLength);
         highlights.push({
           name: "Icon",
@@ -37,7 +37,7 @@ export class Column extends BaseColumn<Params> {
       // for unicode
       case "1":
         icon = "🦕";
-        iconLength = await fn.strdisplaywidth(args.denops, icon);
+        iconLength = await fn.strlen(args.denops, icon);
         padding = "-".repeat(5 - iconLength);
         highlights.push({
           name: "Icon",
@@ -50,7 +50,7 @@ export class Column extends BaseColumn<Params> {
       // for nerdfont
       case "2":
         icon = "";
-        iconLength = await fn.strdisplaywidth(args.denops, icon);
+        iconLength = await fn.strlen(args.denops, icon);
         padding = "-".repeat(5 - iconLength);
         highlights.push({
           name: "Icon",
@@ -61,9 +61,9 @@ export class Column extends BaseColumn<Params> {
         console.log(icon, iconLength, padding);
         break;
       // for 漢字
-      case "3":
+      case "deno.lock":
         icon = "亀";
-        iconLength = await fn.strdisplaywidth(args.denops, icon);
+        iconLength = await fn.strlen(args.denops, icon);
         padding = "-".repeat(5 - iconLength);
         highlights.push({
           name: "Icon",
@@ -75,7 +75,7 @@ export class Column extends BaseColumn<Params> {
         break;
       default:
         icon = "  ";
-        iconLength = await fn.strdisplaywidth(args.denops, icon);
+        iconLength = await fn.strlen(args.denops, icon);
         padding = "-".repeat(5 - iconLength);
         console.log(icon, iconLength, padding);
     }
