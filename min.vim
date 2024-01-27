@@ -3,6 +3,9 @@ set rtp+=~/.cache/dein/nvim/repos/github.com/vim-denops/denops.vim
 " ddu
 set rtp+=~/.cache/dein/nvim/repos/github.com/Shougo/ddu.vim
 set rtp+=~/.cache/dein/nvim/repos/github.com/Shougo/ddu-ui-ff
+set rtp+=~/.cache/dein/nvim/repos/github.com/Shougo/ddu-source-file
+set rtp+=~/.cache/dein/nvim/repos/github.com/Shougo/ddu-column-filename
+set rtp+=~/.cache/dein/nvim/repos/github.com/kamecha/ddu-filter-converter_file_git_status
 
 set rtp+=~/workspace/Plugin/ddu-column-test
 
@@ -12,10 +15,27 @@ filetype plugin indent on
 let s:ddu_setting_json =<< trim END
 {
 	"ui": "ff",
-	"sources": ["otameshi"],
+	"sources": [
+		"file"
+	],
 	"sourceOptions": {
 		"_": {
-			"columns": ["icon", "icon"]
+			"columns": [
+				"filename",
+				{
+					"name": "param",
+					"params": {
+						"text": "unko",
+						"highlights": [
+							{
+								"name": "ddu-column-param",
+								"hl_group": "ErrorMsg",
+								"width": 1
+							}
+						]
+					}
+				}
+			]
 		}
 	}
 }
@@ -33,5 +53,5 @@ function s:ddu_ff_setting()
 	nnoremap <buffer><silent> q
 				\	<Cmd>call ddu#ui#do_action('quit')<CR>
 	nnoremap <buffer><silent> e
-				\	<Cmd>call ddu#ui#ff#do_action('expandItem', #{ mode: "toggle" })<CR>
+				\	<Cmd>call ddu#ui#do_action('expandItem', #{ mode: "toggle" })<CR>
 endfunction
